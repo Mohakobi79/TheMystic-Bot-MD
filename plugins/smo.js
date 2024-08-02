@@ -6,7 +6,7 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
  const datas = global;
  const device = await getDevice(m.key.id);
 
- if (!text) throw `⚠️ *hi *`;
+ if (!text) throw `📥 *music*`;
 
  const results = await yts(text);
  const videos = results.videos.slice(0, 20); // أخذ أول 20 فيديو
