@@ -43,7 +43,7 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
         {
           name: 'single_select',
           buttonParamsJson: JSON.stringify({
-            title: 'OPCIONES DISPONIBLES',
+            title: 'إختر من القائمة 📜',
             sections: videos.map((video) => ({
               title: video.title,
               rows: [
