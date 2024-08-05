@@ -24,12 +24,11 @@ await m.reply(wait);
 
         if (size.split("MB")[0] >= limit) return m.reply(` ≡  *التحميل من يوتوب*\n\n▢ *⚖️Size* : ${size}\n▢ *🎞️الجودة* : ${q}\n\n▢ _يتجاوز الملف حد التنزيل_ *+${limit} MB*`)
         let captvid = `
- ≡  *التحميل من اليوتوب*
+ ≡  *_التحميل من اليوتوب_*
 
-▢ *📌* : ${title}
-▢ *📟* : mp4
-▢ *🎞️* : ${q}
-▢ *⚖️* : ${size}
+🍀 : ${title}
+📽 : mp4
+⚖️: ${size}
 `.trim()
 let dls = "تم تنزيل المقطع بنجاح"
 let doc = {
