@@ -5,12 +5,13 @@ import fs from 'fs';
 
 const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
     const datas = global;
+    await m.reply(wait);
     const idioma = datas.db.data.users[m.sender].language;
     const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`));
     const traductor = _translate.plugins.buscador_yts;
     const device = await getDevice(m.key.id);
     
-  if (!text) throw `⚠️ *${traductor.texto1}*`;
+  if (!text) throw `*_SEARCH ♾️ ON YOUTUBE_*`;
     
   if (device !== 'desktop' || device !== 'web') {      
     
