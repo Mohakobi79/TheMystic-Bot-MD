@@ -7,7 +7,7 @@ export async function before(m) {
     if (!url) return;
 
     const sender = m.sender.split(`@`)[0];
-    await m.reply('wait');
+    await m.reply(wait);
 
     try {
         const apiUrl = `https://widipe.com/download/fbdl?url=${encodeURIComponent(url)}`;
