@@ -31,8 +31,8 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
 
   var messa = await prepareWAMessageMedia({ image: {url: randomVideo.thumbnail}}, { upload: conn.waUploadToServer })
   const interactiveMessage = {
-    body: { text: `*—◉ Resultados obtenidos:* ${results.videos.length}\n*—◉ Video aleatorio:*\n*-› Title:* ${randomVideo.title}\n*-› Author:* ${randomVideo.author.name}\n*-› Views:* ${randomVideo.views}\n*-› ${traductor.texto2[0]}:* ${randomVideo.url}\n*-› Imagen:* ${randomVideo.thumbnail}`.trim() },
-    footer: { text: `${global.wm}`.trim() },  
+    body: { text: `> _*جاري التحميل●●●○○ 💠*_
+> *_■■■■■■□□□□ 60% 𝚠𝚊𝚒𝚝!_*🌀`.trim() },  
       header: {
           title: `*< YouTube Search />*\n`,
           hasMediaAttachment: true,
@@ -50,13 +50,13 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
                 {
                   header: video.title,
                   title: video.author.name,
-                  description: 'Descargar MP3',
+                  description: 'صوت 🎶',
                   id: `${prefijo}play.1 ${video.url}`
                 },
                 {
                   header: video.title,
                   title: video.author.name,
-                  description: 'Descargar MP4',
+                  description: 'فيديو 📽',
                   id: `${prefijo}play.2 ${video.url}`
                 }
               ]
