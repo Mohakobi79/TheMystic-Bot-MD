@@ -55,7 +55,8 @@ global.wm = 'The Mystic - Bot';
 global.titulowm = 'The Mystic - Bot';
 global.titulowm2 = `The Mystic - Bot`
 global.igfg = 'The Mystic - Bot';
-global.wait = '*_[ ⏳ ] Cargando..._*';
+global.wait = '> _*جاري التحميل●●●○○ 💠*_
+> *_■■■■■■□□□□ 60% 𝚠𝚊𝚒𝚝!_*🌀';
 
 global.imagen1 = fs.readFileSync('./Menu2.jpg');
 global.imagen2 = fs.readFileSync('./src/nuevobot.jpg');
