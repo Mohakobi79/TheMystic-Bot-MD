@@ -89,5 +89,5 @@ await m.reply(wait);
 };
 handler.help = ['ytsearch <texto>'];
 handler.tags = ['search'];
-handler.command = /^yat$/i;
+handler.command = /^yts$/i;
 export default handler;
