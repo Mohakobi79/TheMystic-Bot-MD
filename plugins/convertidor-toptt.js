@@ -51,5 +51,5 @@ const handler = async (m) => {
   }
 };
 
-handler.command = /^kan$/i;
+handler.command = /^to$/i;
 export default handler;
