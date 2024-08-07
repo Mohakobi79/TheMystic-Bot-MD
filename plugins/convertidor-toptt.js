@@ -1,25 +1,55 @@
-import {toPTT} from '../lib/converter.js';
+import { Shazam } from 'node-shazam';
+import fs from 'fs';
+import ffmpeg from 'fluent-ffmpeg';
+const shazam = new Shazam();
 
-
-const handler = async (m, {conn, usedPrefix, command}) => {
-  const datas = global
-  const idioma = datas.db.data.users[m.sender].language
-  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
-  const tradutor = _translate.plugins.convertidor_toptt
+const handler = async (m) => {
+  const datas = global;
+  const idioma = datas.db.data.users[m.sender].language;
+  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`));
+  const traductor = _translate.plugins.herramientas_whatmusic;
 
   const q = m.quoted ? m.quoted : m;
-  const mime = (m.quoted ? m.quoted : m.msg).mimetype || '';
-  if (!/video|audio/.test(mime)) throw `*${tradutor.texto1}*`;
-  const media = await q.download?.();
-  if (!media && !/video/.test(mime)) throw `*${tradutor.texto2}*`;
-  if (!media && !/audio/.test(mime)) throw `*${tradutor.texto3}*`;
-  const audio = await toPTT(media, 'mp4');
-  if (!audio.data && !/audio/.test(mime)) throw `*${tradutor.texto4}*`;
-  if (!audio.data && !/video/.test(mime)) throw `*${tradutor.texto5}*`;
-  const aa = conn.sendFile(m.chat, audio.data, 'error.mp3', '', m, true, {mimetype: 'audio/mpeg'});
-  if (!aa) return conn.sendMessage(m.chat, {audio: {url: media}, fileName: 'error.mp3', mimetype: 'audio/mpeg', ptt: true}, {quoted: m});
+  const mime = (q.msg || q).mimetype || '';
+  if (/audio|video/.test(mime)) {
+    const media = await q.download();
+    const ext = mime.split('/')[1];
+    const filePath = `./tmp/${m.sender}.${ext}`;
+    const audioFilePath = `./tmp/${m.sender}.opus`;
+    fs.writeFileSync(filePath, media);
+
+    // Extract audio from video and convert to opus
+    if (/video/.test(mime)) {
+      await new Promise((resolve, reject) => {
+        ffmpeg(filePath)
+          .output(audioFilePath)
+          .audioCodec('libopus')
+          .on('end', resolve)
+          .on('error', reject)
+          .run();
+      });
+    } else {
+      // Convert audio file to opus
+      await new Promise((resolve, reject) => {
+        ffmpeg(filePath)
+          .output(audioFilePath)
+          .audioCodec('libopus')
+          .on('end', resolve)
+          .on('error', reject)
+          .run();
+      });
+    }
+
+    // Send the extracted audio clip as ptt
+    const audioBuffer = fs.readFileSync(audioFilePath);
+    await conn.sendMessage(m.chat, { audio: audioBuffer, fileName: `extracted.opus`, mimetype: 'audio/ogg; codecs=opus', ptt: true }, { quoted: m });
+
+    fs.unlinkSync(filePath);
+    fs.unlinkSync(audioFilePath);
+  } else {
+    throw traductor.texto4;
+  }
 };
-handler.help = ['tovn (reply)'];
-handler.tags = ['audio'];
-handler.command = /^to(vn|(ptt)?)$/i;
+
+handler.command = /^kan$/i;
 export default handler;
