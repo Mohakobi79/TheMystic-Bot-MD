@@ -4,7 +4,7 @@ import { youtubedl, youtubedlv2 } from '@bochilteam/scraper';
 let handler = async (m, { conn, command, args, text, usedPrefix }) => {
  let q, v, yt, dl_url, ttl, size;
 
- if (!text) throw `> 🍀 يرجى إدخال الأمر بشكل صحيح.\n> ${usedPrefix + command} اسم الأغنية أو البحث`;
+ if (!text) throw `> 🍀 يرجى إدخال الأمر بشكل صحيح.🍀\n> ${usedPrefix + command} اسم الأغنية أو البحث`;
 
  try {
  const waitMessage = await conn.sendMessage(m.chat, { react: { text: '🎧', key: m.key } });
