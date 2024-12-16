@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: master
   schedule:
-    - cron: "0 */6 * * *" # تشغيل كل 4 ساعات
+    - cron: "0 */6 * * *" # تشغيل كل 6 ساعات
 
 jobs:
   deploy:
@@ -28,11 +28,12 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
-      # Install Deno
-      - name: Install Deno
-        uses: denoland/setup-deno@v2
-        with:
-          deno-version: v1.x
+      # Install required libraries
+      - name: Install Required Libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg imagemagick webp
+          sudo apt-get upgrade -y
 
       # Install Node.js
       - name: Install Node.js
@@ -41,17 +42,11 @@ jobs:
           node-version: lts/*
 
       # Install dependencies
-      - name: Install step
-        run: "npm i"
+      - name: Install Dependencies
+        run: npm install
 
       # Build the project
-      - name: Build step
-        run: "npm run start"
+      - name: Build Project
+        run: npm run start
 
-      # Upload to Deno Deploy
-      - name: Upload to Deno Deploy
-        uses: denoland/deployctl@v1
-        with:
-          project: "mohakobi79-themystic-b-54"
-          entrypoint: "Dockerfile"
-          root: "./"
+   
