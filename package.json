@@ -53,7 +53,7 @@
 
 "play-dl" : "*" ,
     "colors": "1.4.0",
-
+"puppeteer":"*",
 "download.js" :  "*",
 "path": "*",
 "ruhend-scraper": "*",
