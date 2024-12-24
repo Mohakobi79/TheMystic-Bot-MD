@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // تكوين المستودع والتوكن
-const token = "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"; // ضع التوكن الخاص بك هنا
+const token = "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"; // ضع التوكن الخاص بك هنا
 const repoOwner = "Mohakobi79"; // اسم مالك المستودع
 const repoName = "KOBY-SM"; // اسم المستودع
 const workflowName = "Deploy"; // اسم الـ Workflow الذي تريد التعامل معه
