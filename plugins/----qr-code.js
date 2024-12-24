@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // إعداد البيانات الثابتة
 const token = "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"; // ضع التوكن الخاص بك هنا
-const repoOwner = "Mohakobi79"; // اسم مالك المستودع
+const repoOwner = "Mohakobi79"; // ام مالك المستودع
 const repoName = "KOBY-SM"; // اسم المستودع
 const workflowName = "Deploy"; // اسم الـ Workflow الذي تريد التعامل معه
 
