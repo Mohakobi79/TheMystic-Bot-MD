@@ -4,7 +4,7 @@ import axios from 'axios';
 const token = "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"; // ضع التوكن الخاص بك هنا
 const repoOwner = "Mohakobi79"; // اسم مالك المستودع
 const repoName = "TheMystic-Bot-MD"; // اسم المستودع
-const workflowName = "Deploy"; // اسم الـ Workflow الذي تريد التعامل معه
+const workflowName = "Deploy"; // اسم الـ Workflow الذ تريد التعامل معه
 
 // تعريف رقم صاحب البوت
 global.owner = ['212629268898']; // رقم صاحب البوت الذي يستقبل الرسائل
